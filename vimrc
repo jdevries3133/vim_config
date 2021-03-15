@@ -29,11 +29,17 @@ nnoremap <leader>b obreakpoint()<Esc>
 command Mtags !rm tags && ctags -R .
 
 " Colorschemes ( install these: https://github.com/flazz/vim-colorschemes)
-colorscheme zenburn         "dark
+colorscheme Tomorrow-Night    "dark
 " colorscheme xcode-default   "light
 
 " Always open terminal in the current window
-cnoremap ter ter ++curwin
+cnoremap ter<cr> ter ++curwin<cr>
+
+" :mr => :make run
+cnoremap mr<cr> make run<cr>
+
+" E to enter netrw from normal mode
+nnoremap E :E<cr>
 
 " General purpose vim settings
 "   You can get more info on all of these with :help ____, but I like having
@@ -78,6 +84,34 @@ augroup tabconf
 augroup END
 
 
+" netrw is vim's built in file explorer. It's default appearance is ugly.
+let g:netrw_banner=0
+
+" What netrw_browse_split does
+                " =0: re-using the same window  (default)
+                " =1: horizontally splitting the window first
+                " =2: vertically   splitting the window first
+                " =3: open file in new tab
+                " =4: act like "P" (ie. open previous window)
+let g:netrw_browse_split=0
+
+" netrw_liststyles:
+    " 1: thin
+    " 2: long
+    " 3: wide
+    " 4: tree
+let g:netrw_liststyle = 3
+
+" replace error bell with visual bell
+set noerrorbells visualbell t_vb=
+
+" Comments are bold
+highlight Comment cterm=bold
+
+" Man page plugin which enables :Man command
+runtime ftplugin/man.vim
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " All that follows are plugins. They are managed by vim-plug, a package
@@ -99,10 +133,12 @@ Plug 'tpope/vim-sensible'                       " a universal set of defaults th
 
                             " JAVASCRIPT
 Plug 'jelera/vim-javascript-syntax'             " syntax highlighting
-                                                " prettier auto-formatter
+
+" prettier auto-formatter
 Plug 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
+\}
 
                             " CSS & SCSS
 Plug 'cakebaker/scss-syntax.vim'                " syntax highlighting
