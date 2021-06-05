@@ -1,9 +1,11 @@
 """"""""""""""""" My shortcuts and personal preferences """""""""""""""""""""""
+
+" Map jk to Escape
 tnoremap jk <C-\><C-n>
 inoremap jk <Esc>
 
-" Clear search highlight on press "enter"
-nnoremap <cr> :nohlsearch<cr><cr>
+"Clear searchhighlight on press "enter"
+nnoremap <silent> <cr> :nohlsearch<cr><cr>
 
 " Ctrl + hjkl to move between windows
 nnoremap <C-h> <C-w>h
@@ -16,6 +18,10 @@ nnoremap <C-c> <C-w>c
 nnoremap <silent> <leader>n :bn<cr>
 nnoremap <silent> <leader>N :bp<cr>
 
+" Cycle through quickfix list with <leader>c and <leader>C
+nnoremap <silent> <leader>c :cn<cr>
+nnoremap <silent> <leader>C :cp<cr>
+
 " Delete buffer without closing window
 nnoremap <leader>q :bp<bar>sp<bar>bn<bar>bd<cr>
 
@@ -25,23 +31,28 @@ nnoremap <leader>d o"""<cr><cr>"""<Esc>ki
 " Input python breakpoint with <leader>b
 nnoremap <leader>b obreakpoint()<Esc>
 
-" ctags enables "ctrl + ]" to jump to function / class definition
-command Mtags !rm tags && ctags -R .
+" Spell check in current buffer
+nnoremap <silent> <leader>s :setlocal spell spelllang=en_us<CR>
 
-" Colorschemes ( install these: https://github.com/flazz/vim-colorschemes)
-colorscheme Tomorrow-Night    "dark
-" colorscheme xcode-default   "light
+" Terminal shortcuts
+"
+" <leader>t => open existing terminal in new tab
+" <leader>T => open new terminal in new tab
+" tt => open existing terminal in current window
+nnoremap <silent> <leader>t :tabnew<CR>:buffer ter<Tab><CR>
+nnoremap <silent> <leader>T :tabe +ter<CR>
+nnoremap <silent> tt :buffer term<Tab><CR>
 
-" Always open terminal in the current window
-cnoremap ter<cr> ter ++curwin<cr>
-
-" :mr => :make run
-cnoremap mr<cr> make run<cr>
+" Colorschemes (install these: https://github.com/flazz/vim-colorschemes)
+" colorscheme Tomorrow
+" colorscheme jitterbug
+colorscheme Atelier_SulphurpoolDark
 
 " E to enter netrw from normal mode
 nnoremap E :E<cr>
 
-" General purpose vim settings
+
+"""""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
 "   You can get more info on all of these with :help ____, but I like having
 "   the notes right here so you're not just copying stuff and having no idea
 "   what it does without doing a vim-help-research-project.
