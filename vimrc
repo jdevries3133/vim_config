@@ -51,6 +51,9 @@ colorscheme Atelier_SulphurpoolDark
 " E to enter netrw from normal mode
 nnoremap E :E<cr>
 
+" Toggle colorcolumn
+command! -nargs=1 Ruler :set colorcolumn=<args>
+
 
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
 "   You can get more info on all of these with :help ____, but I like having
@@ -66,7 +69,6 @@ set secure                  " recommended to accompany 'set exrc'
 set number relativenumber   " turn cursor-relative line numbering on
 set path=$PWD/**5           " Update find path to search up to 5 subdirectories
 set list                    " Display tabs and trailing whitespace
-set colorcolumn=80          " Line length rulers at 80 and 100 characters
 set hidden                  " Allow buffers to remain open in the background
 
 " The next four settings completely prevent vim from backing your work up
@@ -91,7 +93,7 @@ set expandtab
 augroup tabconf
     autocmd!
     autocmd Filetype yaml,html,css,htmldjango,javascript,make,txt,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-    autocmd Filetype python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+    autocmd Filetype rst setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
 augroup END
 
 
@@ -138,6 +140,7 @@ runtime ftplugin/man.vim
 call plug#begin()
                             " GENERAL TOOLING
 Plug 'tpope/vim-fugitive'                       " Git commands
+Plug 'tpope/vim-sensible'                       " a universal set of defaults that (hopefully) everyone can agree on.
 Plug 'tommcdo/vim-fugitive-blame-ext'           " Git blame extension
 Plug 'tpope/vim-commentary'                     " Comment anything out with gc<movement>
 Plug 'tpope/vim-sensible'                       " a universal set of defaults that (hopefully) everyone can agree on.
