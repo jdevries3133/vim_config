@@ -14,6 +14,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-c> <C-w>c
 
+" Make 'Y' act like 'D' and 'C'
+nnoremap Y y$
+
 " Cycle through buffers with <leader>n and <leader>N
 nnoremap <silent> <leader>n :bn<cr>
 nnoremap <silent> <leader>N :bp<cr>
