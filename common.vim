@@ -129,3 +129,12 @@ set noerrorbells visualbell t_vb=
 
 " Comments are bold
 highlight Comment cterm=bold
+
+" Aliases for git-fugitive commands
+command! -nargs=0 Ga :Git add -A
+command! -nargs=0 Gc :Git commit -v
+command! -nargs=0 Gd :Git diff
+command! -nargs=0 Gp :Git push
+command! -nargs=0 Gdsp :Gdiff
+command! -nargs=0 Gdsp :Gdiff
+command! -nargs=0 Gdqf :Git difftool
