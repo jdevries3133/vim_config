@@ -106,15 +106,6 @@ augroup tabconf
     autocmd Filetype rst setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
 augroup END
 
-" Python providers
-"   Somewhere, install a python2.* and python3.* virtual environment for
-"   neovim. In each virtual environment, run 'pip install jedi neovim'
-"
-"   Then, put the path to the actual python interpreter within each of those
-"   environments here.
-let g:python_host_prog = "/Users/JohnDeVries/.pyenv/versions/neovim2/bin/python"
-let g:python3_host_prog = "/Users/JohnDeVries/.pyenv/versions/neovim3/bin/python3"
-
 " netrw is vim's built in file explorer. It's default appearance is ugly.
 let g:netrw_banner=0
 
