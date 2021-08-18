@@ -17,6 +17,9 @@ nnoremap <C-c> <C-w>c
 " Make 'Y' act like 'D' and 'C'
 nnoremap Y y$
 
+" Convert selected text in visual mode to hex with ";"
+vnoremap ; :<c-u>s/\%V./\=printf("%x",char2nr(submatch(0)))/g<cr><c-l>`<
+
 " Cycle through buffers with <leader>n and <leader>N
 nnoremap <silent> <leader>n :bn<cr>
 nnoremap <silent> <leader>N :bp<cr>
@@ -63,10 +66,16 @@ nnoremap E :E<cr>
 command -nargs=+ Pep :e ~/repos/peps/pep-<args>.txt
 
 
+"""""""""""""""""""" Snippets """"""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap ,ifna :-1read $HOME/.vim/snippets/name_equals_main.py<CR>jA
+nnoremap ,html :-1read $HOME/.vim/snippets/template.html<CR>/title<CR>cit
+
+
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
 "   You can get more info on all of these with :help ____, but I like having
-"   the notes right here so you're not just copying stuff and having no idea
-"   what it does without doing a vim-help-research-project.
+"   the notes right here so others can just copystuff and know what it does
+"   without doing a vim-help-research-project.
 set showtabline=2           " Always show file name at the top
 syntax on                   " Enable syntax highlighting
 set nowrap                  " Do not wrap lines; not good for all files, but my preference!
@@ -74,7 +83,7 @@ set showcmd                 " Normal mode; show keys you pressed (bottom-right)
 set exrc                    " allow plugins to execute .vimrc files
 set secure                  " recommended to accompany 'set exrc'
 set number relativenumber   " turn cursor-relative line numbering on
-set path=$PWD/**5           " Update find path to search up to 5 subdirectories
+set path+=,$PWD/**           " Update find path to search up to 5 subdirectories
 set list                    " Display tabs and trailing whitespace
 set wildmenu                " Completion suggestions listed on <tab> press
 set lazyredraw              " Do not draw when executing macros, etc
