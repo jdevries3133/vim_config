@@ -5,6 +5,7 @@ Plug 'tpope/vim-sensible'                       " a universal set of defaults th
 Plug 'tommcdo/vim-fugitive-blame-ext'           " Git blame extension
 Plug 'tpope/vim-commentary'                     " Comment anything out with gc<movement>
 Plug 'tpope/vim-sensible'                       " a universal set of defaults that (hopefully) everyone can agree on.
+Plug 'flazz/vim-colorschemes'                   " colorscheme collection
 
                             " JAVASCRIPT
 Plug 'jelera/vim-javascript-syntax'             " syntax highlighting
