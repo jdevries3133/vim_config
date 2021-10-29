@@ -68,8 +68,7 @@ command -nargs=+ Pep :e ~/repos/peps/pep-<args>.txt
 
 """""""""""""""""""" Snippets """"""""""""""""""""""""""""""""""""""""""""""""
 
-nnoremap ,ifna :-1read $HOME/.vim/snippets/name_equals_main.py<CR>jA
-nnoremap ,html :-1read $HOME/.vim/snippets/template.html<CR>/title<CR>cit
+source $HOME/.vim/snippets.vim
 
 
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
