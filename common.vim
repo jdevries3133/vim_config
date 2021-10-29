@@ -112,7 +112,6 @@ augroup tabconf
     autocmd!
     autocmd Filetype yaml,html,css,htmldjango,javascript,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
     autocmd Filetype rst setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
-    autocmd Filetype rst,markdown,mail setlocal spell
 augroup END
 
 " netrw is vim's built in file explorer. It's default appearance is ugly.
