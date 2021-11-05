@@ -26,8 +26,8 @@ nnoremap <silent> <leader>n :bnext<cr>
 nnoremap <silent> <leader>N :bprevious<cr>
 
 " Cycle through quickfix list with <leader>c and <leader>C
-nnoremap <silent> <leader>c :cnext<cr>
-nnoremap <silent> <leader>C :cprevious<cr>
+nnoremap <silent> <leader>c :cnext<cr>zz
+nnoremap <silent> <leader>C :cprevious<cr>zz
 
 " Delete buffer without closing window
 nnoremap <leader>q :bprevious<bar>split<bar>bnext<bar>bdelete<cr>
@@ -92,6 +92,7 @@ set list                    " make tabs and trailing whitespace visible
 set wildmenu                " enables tab-complete list in command mode
 set lazyredraw              " do not re-draw while executing macros
 set colorcolumn=80          " ruler at 80 chars
+set cursorline              " highlight the line that the cursor is on
 
 " The next four settings completely prevent vim from backing your work up
 " anywhere. These backups can cause bugs for many plugins, clutter your
@@ -118,8 +119,12 @@ set expandtab
 
 augroup tabconf
     autocmd!
+
     " 2-space tab languages
-    autocmd Filetype yaml,html,css,htmldjango,javascript,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype 
+\       yaml,html,css,htmldjango,javascript,javascriptreact,typescript,markdown
+\       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
     " 3-space tab languages (why, reStructured text, why?!?)
     autocmd Filetype rst setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
 augroup END
