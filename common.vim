@@ -42,9 +42,6 @@ nnoremap <leader>b obreakpoint()<Esc>
 nnoremap <silent> <leader>s :setlocal spell spelllang=en_us<CR>
 nnoremap <silent> <leader>S :setlocal nospell<CR>
 
-" Toggle recursive fold
-nnoremap <leader>f zA
-
 " Syntax fold, for C-like languages
 nnoremap <silent> <leader>Fs :set foldmethod=syntax<CR>
 
@@ -153,6 +150,9 @@ set noerrorbells visualbell t_vb=
 
 " Comments are bold
 highlight Comment cterm=bold
+
+" built-in macro for html tag matching with %
+runtime macros/matchit.vim
 
 " Aliases for git-fugitive commands
 command! -nargs=0 Ga :Git add -A
