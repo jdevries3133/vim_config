@@ -1,7 +1,6 @@
-" Colorschemes (install these: https://github.com/flazz/vim-colorschemes)
-colorscheme Tomorrow-Night
+set ttyfast
 
 source $HOME/.vim/common.vim
 source $HOME/.vim/plugins.vim
 
-set ttyfast
+colorscheme Tomorrow-Night
