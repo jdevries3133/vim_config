@@ -9,12 +9,6 @@ Plug 'tpope/vim-sensible'                       " a universal set of defaults th
                             " JAVASCRIPT
 Plug 'jelera/vim-javascript-syntax'             " syntax highlighting
 
-" prettier auto-formatter
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html']
-\}
-
                             " CSS & SCSS
 Plug 'cakebaker/scss-syntax.vim'                " syntax highlighting
 
