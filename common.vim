@@ -29,6 +29,10 @@ nnoremap <silent> <leader>N :bprevious<cr>
 nnoremap <silent> <leader>c :cnext<cr>zz
 nnoremap <silent> <leader>C :cprevious<cr>zz
 
+" Vertically center the cursor with `zz` while cycling through search results
+nnoremap n nzz
+nnoremap N Nzz
+
 " Delete buffer without closing window
 nnoremap <leader>q :bprevious<bar>split<bar>bnext<bar>bdelete<cr>
 
@@ -118,13 +122,14 @@ augroup tabconf
     autocmd!
 
     " 2-space tab languages
-    autocmd Filetype 
+    autocmd Filetype
 \       yaml,html,css,htmldjango,javascript,javascriptreact,typescript,typescriptreact,markdown,terraform
 \       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
     " 3-space tab languages (why, reStructured text, why?!?)
     autocmd Filetype rst setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
 augroup END
+
 
 " netrw is vim's built in file explorer, and has a huge banner consuming 2/3
 " of the vertical screen space by default.
