@@ -131,6 +131,10 @@ augroup tabconf
 augroup END
 
 
+" Detect MDX files as markdown
+au BufNewFile,BufRead *.mdx set filetype=markdown
+
+
 " netrw is vim's built in file explorer, and has a huge banner consuming 2/3
 " of the vertical screen space by default.
 let g:netrw_banner=0
