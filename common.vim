@@ -131,8 +131,14 @@ augroup tabconf
 augroup END
 
 
-" Detect MDX files as markdown
-au BufNewFile,BufRead *.mdx set filetype=markdown
+augroup markdown
+    " Detect MDX files as markdown
+    autocmd BufNewFile,BufRead *.mdx set filetype=markdown
+
+    " Set textwidth to 80 chars
+    autocmd Filetype markdown setlocal textwidth=80
+
+augroup END
 
 
 " netrw is vim's built in file explorer, and has a huge banner consuming 2/3
