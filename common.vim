@@ -70,6 +70,9 @@ nnoremap E :E<cr>
 " Open peps quickly, if present
 command -nargs=+ Pep :e ~/repos/peps/pep-<args>.txt
 
+" `0` goes to the first non-whitespace character on the first press, then the
+" start of the line on the second
+nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 
 """""""""""""""""""" Snippets """"""""""""""""""""""""""""""""""""""""""""""""
 
