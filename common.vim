@@ -70,10 +70,6 @@ command -nargs=+ Pep :e ~/repos/peps/pep-<args>.txt
 " start of the line on the second
 nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 
-"""""""""""""""""""" Snippets """"""""""""""""""""""""""""""""""""""""""""""""
-
-source $HOME/.vim/snippets.vim
-
 
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
 "   You can get more info on all of these with :help ____, but I like having
