@@ -21,10 +21,6 @@ nnoremap Y y$
 " Convert selected text in visual mode to hex with ";"
 vnoremap ; :<c-u>s/\%V./\=printf("%x",char2nr(submatch(0)))/g<cr><c-l>`<
 
-" Cycle through buffers with <leader>n and <leader>N
-nnoremap <silent> <leader>n :bnext<cr>
-nnoremap <silent> <leader>N :bprevious<cr>
-
 " Cycle through quickfix list with <leader>c and <leader>C
 nnoremap <silent> <leader>c :cnext<cr>zz
 nnoremap <silent> <leader>C :cprevious<cr>zz
@@ -139,7 +135,7 @@ augroup markdown
     autocmd BufNewFile,BufRead *.mdx set filetype=markdown
 
     " Set textwidth to 80 chars
-    autocmd Filetype markdown setlocal textwidth=80
+    autocmd Filetype markdown,smgl setlocal textwidth=79 spell
 
 augroup END
 
