@@ -32,12 +32,6 @@ nnoremap N Nzz
 " Delete buffer without closing window
 nnoremap <leader>q :bprevious<bar>split<bar>bnext<bar>bdelete<cr>
 
-" Input python docstring with <leader>d
-nnoremap <leader>d o""""""<Esc>hhi
-
-" Input python breakpoint with <leader>b
-nnoremap <leader>b obreakpoint()<Esc>
-
 " Spell check in current buffer
 nnoremap <silent> <leader>s :setlocal spell spelllang=en_us<CR>
 nnoremap <silent> <leader>S :setlocal nospell<CR>
@@ -63,12 +57,12 @@ nnoremap <silent> tt :buffer term<Tab><CR>
 " E to enter netrw from normal mode
 nnoremap E :E<cr>
 
-" Open peps quickly, if present
-command -nargs=+ Pep :e ~/repos/peps/pep-<args>.txt
-
 " `0` goes to the first non-whitespace character on the first press, then the
 " start of the line on the second
 nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+
+" rerun previous shell command with <leader>.
+nnoremap <leader>. :!!<CR>
 
 
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
@@ -118,7 +112,7 @@ augroup tabconf
 
     " 2-space tab languages
     autocmd Filetype
-\       yaml,html,css,htmldjango,javascript,javascriptreact,typescript,typescriptreact,markdown,terraform
+\       yaml,html,css,htmldjango,javascript,javascriptreact,typescript,typescriptreact,markdown,terraform,dart
 \       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
     " 3-space tab languages (why, reStructured text, why?!?)
