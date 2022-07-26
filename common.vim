@@ -56,10 +56,6 @@ nnoremap N Nzz
 " Delete buffer without closing window
 nnoremap <leader>q :bprevious<bar>split<bar>bnext<bar>bdelete<cr>
 
-" Spell check in current buffer
-nnoremap <silent> <leader>s :setlocal spell spelllang=en_us<CR>
-nnoremap <silent> <leader>S :setlocal nospell<CR>
-
 " Syntax fold, for C-like languages
 nnoremap <silent> <leader>Fs :set foldmethod=syntax<CR>
 
@@ -183,10 +179,12 @@ highlight Comment cterm=bold
 runtime macros/matchit.vim
 
 " Aliases for git-fugitive commands
+command! -nargs=0 Glg :Git log --stat
 command! -nargs=0 Ga :Git add -A
 command! -nargs=0 Gc :Git commit -v
 command! -nargs=0 Gd :Git diff
 command! -nargs=0 Gp :Git push
-command! -nargs=0 Gdsp :Gdiff
-command! -nargs=0 Gdsp :Gdiff
-command! -nargs=0 Gdqf :Git difftool
+
+
+" prettier formatting hack
+command! -nargs=0 Prettier :w<bar>:!prettier -w %
