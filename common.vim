@@ -56,15 +56,6 @@ nnoremap N Nzz
 " Delete buffer without closing window
 nnoremap <leader>q :bprevious<bar>split<bar>bnext<bar>bdelete<cr>
 
-" Syntax fold, for C-like languages
-nnoremap <silent> <leader>Fs :set foldmethod=syntax<CR>
-
-" Indent fold for python
-nnoremap <silent> <leader>Fi :set foldmethod=indent<CR>
-
-" 'Fold none': open all folds
-nnoremap <silent> <leader>Fn :set foldmethod=manual<CR>zR
-
 " Terminal emulator shortcuts
 "
 " <leader>t => open *existing* terminal in new tab
