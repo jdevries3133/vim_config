@@ -1,3 +1,27 @@
+" If you are forking my config, note that this is where most of the more
+" controversial personal-opinion type configuration for myself is. In
+" particular, I tried to write this file in order of most to least personal
+" config, so that you can focus on changing the first part if you are forking.
+"
+" In no particular order, these are some of the questionable things that are
+" implemented here:
+"
+" - `jk` is mapped to `<Esc>` in both insert and termainl modes
+" - `Y` is mapped to `y$` so that `Y` behaves like `D` and `C`
+" - `<leader>c` and `<leader>C` go forwards/backwards through the quickfix list
+" - `<leader>q` closes all but the current buffer
+" - `<leader>Fs` folds the file by syntax
+" - `<leader>Fi` folds the file by indentation
+" - `<leader>Fn` sets the fold method back to none
+" - these terminal-related mappings are redundant as a result of their
+"   simplicity:
+"     - `tt` jumps to the terminal buffer (or whatever buffer starts with `ter`)
+"     - `<leader>t` opens the terminal buffer in a new tab
+"     - `<leader>T` opens a new terminal buffer in a new tabkkk
+" - `<leader>.` is mapped to `:!!` to re-run the prevous :! command
+" - `0` jumps back to the first non-whitespace character instead of all the way
+"   back to the beginning of the line
+
 """""""""""""""" My shortcuts and personal preferences """""""""""""""""""""""
 
 " Map jk to Escape
