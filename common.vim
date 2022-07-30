@@ -1,24 +1,17 @@
-" If you are forking my config, note that this is where most of the more
-" controversial personal-opinion type configuration for myself is. In
-" particular, I tried to write this file in order of most to least personal
-" config, so that you can focus on changing the first part if you are forking.
+" If you are forking my config, note that this is where all of the more
+" personal-opinion type configuration for myself is. In particular, I tried to
+" write this file in order of most to least personal config, so that you can
+" focus on changing the first part if you are forking.
 "
 " In no particular order, these are some of the questionable things that are
 " implemented here:
 "
-" - `jk` is mapped to `<Esc>` in both insert and termainl modes
+" - `jk` is mapped to `<Esc>` in both insert and terminal modes
 " - `Y` is mapped to `y$` so that `Y` behaves like `D` and `C`
+" - `T` opens a new tab
 " - `<leader>c` and `<leader>C` go forwards/backwards through the quickfix list
-" - `<leader>q` closes all but the current buffer
-" - `<leader>Fs` folds the file by syntax
-" - `<leader>Fi` folds the file by indentation
-" - `<leader>Fn` sets the fold method back to none
-" - these terminal-related mappings are redundant as a result of their
-"   simplicity:
-"     - `tt` jumps to the terminal buffer (or whatever buffer starts with `ter`)
-"     - `<leader>t` opens the terminal buffer in a new tab
-"     - `<leader>T` opens a new terminal buffer in a new tabkkk
-" - `<leader>.` is mapped to `:!!` to re-run the prevous :! command
+" - `<leader>q` close buffer without affecting window layout
+" - `tt` jumps to the terminal buffer (or whatever buffer starts with `ter`)
 " - `0` jumps back to the first non-whitespace character instead of all the way
 "   back to the beginning of the line
 
@@ -42,7 +35,7 @@ nnoremap <C-c> <C-w>c
 " cursor to the end.
 nnoremap Y y$
 
-" Convert selected text in visual mode to hex with ";"
+" ';' convert selected text in visual mode to hex
 vnoremap ; :<c-u>s/\%V./\=printf("%x",char2nr(submatch(0)))/g<cr><c-l>`<
 
 " Cycle through quickfix list with <leader>c and <leader>C
@@ -53,17 +46,18 @@ nnoremap <silent> <leader>C :cprevious<cr>zz
 nnoremap n nzz
 nnoremap N Nzz
 
-" Delete buffer without closing window
+" Delete the current buffer without changing window layout
 nnoremap <leader>q :bprevious<bar>split<bar>bnext<bar>bdelete<cr>
 
 " Terminal emulator shortcuts
 "
-" <leader>t => open *existing* terminal in new tab
 " <leader>T => open new terminal in new tab
 " tt => jump to existing terminal in current window
-nnoremap <silent> <leader>t :tabnew<CR>:buffer ter<Tab><CR>
-nnoremap <silent> <leader>T :tabe +ter<CR>
 nnoremap <silent> tt :buffer term<Tab><CR>
+
+" Open a new tab
+nnoremap T :tabnew<cr>
+
 
 " E to enter netrw from normal mode
 nnoremap E :E<cr>
@@ -72,24 +66,29 @@ nnoremap E :E<cr>
 " start of the line on the second
 nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 
-" rerun previous shell command with <leader>.
-nnoremap <leader>. :!!<CR>
-
 
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
 "   You can get more info on all of these with :help ____, but I like having
 "   the notes right here so others can just copy stuff and know what it does
 "   without doing a vim-help-research-project.
 "
-set showtabline=2           " always show file name at the top
 syntax on                   " enable syntax highlighting
+set showtabline=2           " always show file name at the top
 set nowrap                  " do not wrap lines
-set showcmd                 " normal mode; show keys you pressed (bottom-right)
+set showcmd                 " in normal mode show keys you pressed (bottom-right)
 set exrc                    " allow plugins to execute .vimrc files
 set secure                  " recommended to accompany 'set exrc'
-set number relativenumber   " turn cursor-relative line numbering on
-set path+=,$PWD/**          " :find and similar searchs recursively down
-set list                    " make tabs and trailing whitespace visible
+set number                  " show line numbers
+set relativenumber          " line numbers above & below cursor are relative
+set incsearch               " jump to closest match during searching
+set path+=,$PWD/**          " :find and similar searches recursively forever
+set list                    " show non-printable characters as follows
+set listchars=tab:»\        " 'real' tabs appear as '»'
+set listchars+=extends:›    " super long lines like this end with › I'll show youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+set listchars+=precedes:‹   " go to the end of the line above, it starts with ‹
+set listchars+=nbsp:␣       " &nbsp becomes ␣
+set listchars+=trail:·      " trailing whitespace becomes                     
+set showbreak=↪\            " if wrapping is on, wrapped lines start with ↪
 set wildmenu                " enables tab-complete list in command mode
 set lazyredraw              " do not re-draw while executing macros
 set colorcolumn=80          " ruler at 80 chars
@@ -110,9 +109,8 @@ set wildignore+=*.pyc,*.pyo,*/__pycache__/*     " Python
 set wildignore+=*.o,*.ko,*.obj,*.dSYM           " C
 set wildignore+=*.swp,~*                        " Temp files
 set wildignore+=*.zip,*.tar                     " Archives
-set wildignore+=node_modules/*                  " Javascript / Node.js
 
-"  default tab/space stops of 4 spaces, overrided for sime filetypes below
+"  default tab/space stops of 4 spaces, overrided for some filetypes below
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -138,20 +136,22 @@ augroup markdown
     " Set textwidth to 80 chars
     autocmd Filetype markdown,smgl setlocal textwidth=79 spell
 
+    " Wrap text for markdown
+    autocmd Filetype markdown,smgl setlocal wrap
+
 augroup END
 
 
 " netrw is vim's built in file explorer, and has a huge banner consuming 2/3
-" of the vertical screen space by default.
-let g:netrw_banner=0
+" of the vertical screen space by default. This disables it.
+let g:netrw_banner = 0
 
-" netrw_browse_split options:
 "   0: re-using the same window  (default)
 "   1: horizontally splitting the window first
 "   2: vertically   splitting the window first
 "   3: open file in new tab
 "   4: open in previous window (very IDE-like)
-let g:netrw_browse_split=0
+let g:netrw_browse_split = 0
 
 " netrw list styles:
 "   1: thin
@@ -160,22 +160,6 @@ let g:netrw_browse_split=0
 "   4: tree
 let g:netrw_liststyle = 3
 
-" replace error bell with visual bell
-set noerrorbells visualbell t_vb=
-
-" Comments are bold
-highlight Comment cterm=bold
-
-" built-in macro for html tag matching with %
+" built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
 
-" Aliases for git-fugitive commands
-command! -nargs=0 Glg :Git log --stat
-command! -nargs=0 Ga :Git add -A
-command! -nargs=0 Gc :Git commit -v
-command! -nargs=0 Gd :Git diff
-command! -nargs=0 Gp :Git push
-
-
-" prettier formatting hack
-command! -nargs=0 Prettier :w<bar>:!prettier -w %
