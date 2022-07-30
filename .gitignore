@@ -1,5 +1,5 @@
 plugged
-plugin
+./plugin
 .VimballRecord
 .netrwhist
 autoload
