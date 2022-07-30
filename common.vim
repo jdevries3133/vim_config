@@ -177,4 +177,4 @@ runtime macros/matchit.vim
 " This is a built-in colorscheme that is a bit less offensive to my eyes than
 " default. It's only here for when you might scp this file onto a remove
 " server all by itself
-colorscheme elford
+colorscheme elflord
