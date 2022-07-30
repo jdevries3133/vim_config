@@ -1,10 +1,15 @@
-" If you are forking my config, note that this is where all of the more
-" personal-opinion type configuration for myself is. In particular, I tried to
-" write this file in order of most to least personal config, so that you can
-" focus on changing the first part if you are forking.
+" This is compatible with vim and neovim and makes no reference to any
+" plugins. Great for copying over to a remote machine as your vimrc to provide
+" a basic level of comfort via this bash snippet
 "
-" In no particular order, these are some of the questionable things that are
-" implemented here:
+" curl https://raw.githubusercontent.com/jdevries3133/vim_config/main/common.vim -o $HOME/.vimrc
+"                                        |
+"                                        ^ change the URL if you forked!!
+
+"""""""""""""""" My shortcuts and personal preferences """""""""""""""""""""""
+
+" In no particular order, these are some of the questionable and undoubtedly
+" personal things that are implemented here:
 "
 " - `jk` is mapped to `<Esc>` in both insert and terminal modes
 " - `Y` is mapped to `y$` so that `Y` behaves like `D` and `C`
@@ -14,8 +19,6 @@
 " - `tt` jumps to the terminal buffer (or whatever buffer starts with `ter`)
 " - `0` jumps back to the first non-whitespace character instead of all the way
 "   back to the beginning of the line
-
-"""""""""""""""" My shortcuts and personal preferences """""""""""""""""""""""
 
 " Map jk to Escape
 tnoremap jk <C-\><C-n>
@@ -39,6 +42,7 @@ nnoremap Y y$
 vnoremap ; :<c-u>s/\%V./\=printf("%x",char2nr(submatch(0)))/g<cr><c-l>`<
 
 " Cycle through quickfix list with <leader>c and <leader>C
+" `zz` centers the cursor on the screen
 nnoremap <silent> <leader>c :cnext<cr>zz
 nnoremap <silent> <leader>C :cprevious<cr>zz
 
@@ -68,11 +72,16 @@ nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
 
 
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
-"   You can get more info on all of these with :help ____, but I like having
-"   the notes right here so others can just copy stuff and know what it does
-"   without doing a vim-help-research-project.
 "
+" You can get more info on all of these with :help ____, but I like having the
+" notes right here so others can just copy stuff and know what it does without
+" doing a vim-help-research-project.
+"
+" These are generally less-controversial settings compared to the section
+" above.
+
 syntax on                   " enable syntax highlighting
+set ttyfast                 " tell vim this isn't a 1995 dial-up remote terminal
 set showtabline=2           " always show file name at the top
 set nowrap                  " do not wrap lines
 set showcmd                 " in normal mode show keys you pressed (bottom-right)
@@ -160,6 +169,12 @@ let g:netrw_browse_split = 0
 "   4: tree
 let g:netrw_liststyle = 3
 
+
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
 
+
+" This is a built-in colorscheme that is a bit less offensive to my eyes than
+" default. It's only here for when you might scp this file onto a remove
+" server all by itself
+colorscheme elford
