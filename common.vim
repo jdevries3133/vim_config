@@ -126,7 +126,6 @@ set shiftwidth=4
 set expandtab
 
 augroup tabconf
-    autocmd!
 
     " 2-space tab languages
     autocmd Filetype
@@ -143,11 +142,17 @@ augroup markdown
     autocmd BufNewFile,BufRead *.mdx set filetype=markdown
 
     " Set textwidth to 80 chars
-    autocmd Filetype markdown,smgl setlocal textwidth=79 spell
+    " The `pr` filetype is used by `gh.nvim`
+    autocmd Filetype markdown,smgl,pr setlocal textwidth=79 spell
 
     " Wrap text for markdown
     autocmd Filetype markdown,smgl setlocal wrap
 
+augroup END
+
+
+augroup rust
+    autocmd BufNewFile,BufRead *.rs nnoremap <leader>ct :!cargo test<CR>
 augroup END
 
 
@@ -172,9 +177,3 @@ let g:netrw_liststyle = 3
 
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
-
-
-" This is a built-in colorscheme that is a bit less offensive to my eyes than
-" default. It's only here for when you might scp this file onto a remove
-" server all by itself
-colorscheme elflord
