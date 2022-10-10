@@ -68,11 +68,6 @@ nnoremap <leader>T :tabnew<cr><bar>:terminal<cr>
 " E to enter netrw from normal mode
 nnoremap E :Explore<cr>
 
-
-" `0` goes to the first non-whitespace character on the first press, then the
-" start of the line on the second
-nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
-
 " command to copy the current filename into the system clipboard
 nnoremap <silent> <leader>yf :let @"=@%<CR>
 
