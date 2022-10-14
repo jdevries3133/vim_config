@@ -1,3 +1,4 @@
+"
 " This is compatible with vim and neovim and makes no reference to any
 " plugins. Great for copying over to a remote machine as your vimrc to provide
 " a basic level of comfort via this bash snippet
@@ -61,14 +62,15 @@ nnoremap <silent> tt :buffer term<Tab><CR>
 
 " Open a new tab
 nnoremap T :tabnew<cr>
+nnoremap <leader>T :tabnew<cr><bar>:terminal<cr>
 
 
 " E to enter netrw from normal mode
-nnoremap E :E<cr>
+nnoremap E :Explore<cr>
 
-" `0` goes to the first non-whitespace character on the first press, then the
-" start of the line on the second
-nnoremap <expr> <silent> 0 col('.') == match(getline('.'),'\S')+1 ? '0' : '^'
+" command to copy the current filename into the system clipboard
+nnoremap <silent> <leader>yf :let @"=@%<CR>
+
 
 
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
@@ -90,7 +92,6 @@ set secure                  " recommended to accompany 'set exrc'
 set number                  " show line numbers
 set relativenumber          " line numbers above & below cursor are relative
 set incsearch               " jump to closest match during searching
-set path+=,$PWD/**          " :find and similar searches recursively forever
 set list                    " show non-printable characters as follows
 set listchars=tab:»\        " 'real' tabs appear as '»'
 set listchars+=extends:›    " super long lines like this end with › I'll show youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu
@@ -102,6 +103,7 @@ set wildmenu                " enables tab-complete list in command mode
 set lazyredraw              " do not re-draw while executing macros
 set colorcolumn=80          " ruler at 80 chars
 set cursorline              " highlight the line that the cursor is on
+set nofixendofline          " do not restore EOL at end of file when missing
 
 " The next four settings completely prevent vim from backing your work up
 " anywhere. These backups can cause bugs for many plugins, clutter your
