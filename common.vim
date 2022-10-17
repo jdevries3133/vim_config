@@ -68,10 +68,6 @@ nnoremap <leader>T :tabnew<cr><bar>:terminal<cr>
 " E to enter netrw from normal mode
 nnoremap E :Explore<cr>
 
-" command to copy the current filename into the system clipboard
-nnoremap <silent> <leader>yf :let @"=@%<CR>
-
-
 
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
 "
@@ -179,3 +175,7 @@ let g:netrw_liststyle = 3
 
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
+
+" see https://jackdevries.com/post/vimRipgrep
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m,%f:%l:%m
