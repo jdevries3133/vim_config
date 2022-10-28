@@ -7,5 +7,9 @@ command! -nargs=0 Gd :Git diff
 command! -nargs=0 Gp :Git push
 command! -nargs=0 Gcap :Git commit --amend --no-edit --no-verify
 
-" prettier formatting hack
+" Format the file or visual selection with prettier
+vnoremap <leader>p :%!prettier --stdin-filepath %<CR>
+
+" Format the whole file with prettier
 command! -nargs=0 Prettier :w<bar>:!prettier -w %
+

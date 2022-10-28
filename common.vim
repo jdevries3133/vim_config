@@ -177,5 +177,7 @@ let g:netrw_liststyle = 3
 runtime macros/matchit.vim
 
 " see https://jackdevries.com/post/vimRipgrep
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-set grepformat=%f:%l:%c:%m,%f:%l:%m
+if executable('rg')
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
