@@ -104,6 +104,7 @@ set lazyredraw              " do not re-draw while executing macros
 set colorcolumn=80          " ruler at 80 chars
 set cursorline              " highlight the line that the cursor is on
 set nofixendofline          " do not restore EOL at end of file when missing
+set nosmartindent           " thank you Lawrence
 
 " The next four settings completely prevent vim from backing your work up
 " anywhere. These backups can cause bugs for many plugins, clutter your
@@ -179,3 +180,9 @@ let g:netrw_liststyle = 3
 
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
+
+if executable('rg')
+    " See https://jackdevries.com/blog/vimRipgrep
+    set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+    set grepformat=%f:%l:%c:%m,%f:%l:%m
+endif
