@@ -12,4 +12,3 @@ vnoremap <leader>p :%!prettier --stdin-filepath %<CR>
 
 " Format the whole file with prettier
 command! -nargs=0 Prettier :w<bar>:!prettier -w %
-
