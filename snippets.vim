@@ -9,3 +9,4 @@ nnoremap <leader>,dj :-1read $HOME/.vim/snippets/django_tag.html<CR>03li
 nnoremap <leader>,djc :-1read $HOME/.vim/snippets/django_template_comment.html<CR>0f}a
 nnoremap <leader>,yew :-1read $HOME/.vim/snippets/yew.rs<CR>0f}a
 nnoremap <leader>,rac :-1read $HOME/.vim/snippets/reactComponent.tsx<CR>
+nnoremap <leader>,csa :-1read $HOME/.vim/snippets/codeSample.mdx<CR>
