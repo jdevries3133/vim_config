@@ -173,6 +173,9 @@ let g:netrw_browse_split = 0
 "   4: tree
 let g:netrw_liststyle = 3
 
+" Normally, netrw will hide line numbers, now it won't do that.
+let g:netrw_bufsettings = 'number relativenumber'
+
 
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
