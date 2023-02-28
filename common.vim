@@ -174,8 +174,7 @@ let g:netrw_browse_split = 0
 let g:netrw_liststyle = 3
 
 " Normally, netrw will hide line numbers, now it won't do that.
-let g:netrw_bufsettings = 'number relativenumber'
-
+let g:netrw_bufsettings = 'noma nomod nowrap ro nobl'
 
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
