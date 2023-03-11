@@ -172,8 +172,8 @@ let g:netrw_browse_split = 0
 "   4: tree
 let g:netrw_liststyle = 3
 
-" Normally, netrw will hide line numbers, now it won't do that.
-let g:netrw_bufsettings = 'noma nomod nowrap ro nobl'
+" This differs from the default such that we will show line numbers
+let g:netrw_bufsettings = 'nomagic nomodifiable nowrap readonly nobuflisted'
 
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
