@@ -98,7 +98,6 @@ set showbreak=↪\            " if wrapping is on, wrapped lines start with ↪
 set wildmenu                " enables tab-complete list in command mode
 set lazyredraw              " do not re-draw while executing macros
 set colorcolumn=80          " ruler at 80 chars
-set cursorline              " highlight the line that the cursor is on
 set nofixendofline          " do not restore EOL at end of file when missing
 set nosmartindent           " thank you Lawrence
 
