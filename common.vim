@@ -64,11 +64,6 @@ nnoremap <silent> tt :buffer term<Tab><CR>
 nnoremap T :tabnew<cr>
 nnoremap <leader>T :tabnew<cr><bar>:terminal<cr>
 
-
-" E to enter netrw from normal mode
-nnoremap E :Explore<cr>
-
-
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
 "
 " You can get more info on all of these with :help ____, but I like having the
