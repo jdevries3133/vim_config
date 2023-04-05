@@ -1,5 +1,6 @@
 " Aliases for git-fugitive commands
 command! -nargs=0 Glg :Git log --stat
+command! -nargs=0 Glog :Git log --oneline --graph
 command! -nargs=0 Ga :Git add -A
 command! -nargs=0 Gc :Git commit -v
 command! -nargs=0 Gcs :Git commit -v --no-verify
