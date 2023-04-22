@@ -168,7 +168,9 @@ let g:netrw_browse_split = 0
 let g:netrw_liststyle = 3
 
 " This differs from the default such that we will show line numbers
-let g:netrw_bufsettings = 'nomagic nomodifiable nowrap readonly nobuflisted'
+let g:netrw_bufsettings = 'nofile nomagic nomodifiable nowrap readonly nobuflisted'
+autocmd FileType netrw setlocal bufhidden=delete
+
 
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
