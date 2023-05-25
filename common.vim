@@ -119,7 +119,7 @@ augroup tabconf
 
     " 2-space tab languages
     autocmd Filetype
-\       yaml,html,css,htmldjango,javascript,javascriptreact,typescript,typescriptreact,markdown,terraform,dart,lua,hcl
+\       yaml,html,css,htmldjango,javascript,javascriptreact,typescript,typescriptreact,markdown,terraform,dart,lua,hcl,astro
 \       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
     " 3-space tab languages (why, reStructured text, why?!?)
@@ -164,8 +164,9 @@ let g:netrw_browse_split = 0
 "   4: tree
 let g:netrw_liststyle = 3
 
-" This differs from the default such that we will show line numbers
-let g:netrw_bufsettings = 'nofile nomagic nomodifiable nowrap readonly nobuflisted'
+" This is the default, except we remove "nonu" - because I want line numbers
+" in Netrw buffers
+let g:netrw_bufsettings = 'nomagic nomodeline nowrap readonly nobuflisted'
 autocmd FileType netrw setlocal bufhidden=delete
 
 
