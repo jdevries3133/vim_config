@@ -39,9 +39,6 @@ nnoremap <C-c> <C-w>c
 " cursor to the end.
 nnoremap Y y$
 
-" ';' convert selected text in visual mode to hex
-vnoremap ; :<c-u>s/\%V./\=printf("%x",char2nr(submatch(0)))/g<cr><c-l>`<
-
 " Cycle through quickfix list with <leader>c and <leader>C
 " `zz` centers the cursor on the screen
 nnoremap <silent> <leader>c :cnext<cr>zz
