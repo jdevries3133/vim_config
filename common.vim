@@ -61,6 +61,9 @@ nnoremap <silent> tt :buffer term<Tab><CR>
 nnoremap T :tabnew<cr>
 nnoremap <leader>T :tabnew<cr><bar>:terminal<cr>
 
+" fix comments; convert `//`-style comments to ` * ...`
+vnoremap <leader>c :s/\\/\\// */g<CR>
+
 """""""""""""""""""" General purpose vim settings """"""""""""""""""""""""""""
 "
 " You can get more info on all of these with :help ____, but I like having the
