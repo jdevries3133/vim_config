@@ -167,11 +167,7 @@ let g:netrw_browse_split = 0
 "   4: tree
 let g:netrw_liststyle = 3
 
-" This is the default, except we remove "nonu" - because I want line numbers
-" in Netrw buffers
-let g:netrw_bufsettings = 'nomagic nomodeline nowrap readonly nobuflisted'
-autocmd FileType netrw setlocal bufhidden=delete
-
+let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
