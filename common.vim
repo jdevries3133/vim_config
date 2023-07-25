@@ -48,9 +48,6 @@ nnoremap <silent> <leader>C :cprevious<cr>zz
 nnoremap n nzz
 nnoremap N Nzz
 
-" Delete the current buffer without changing window layout
-nnoremap <leader>q :bprevious<bar>split<bar>bnext<bar>bdelete<cr>
-
 " Terminal emulator shortcuts
 "
 " <leader>T => open new terminal in new tab
@@ -58,8 +55,7 @@ nnoremap <leader>q :bprevious<bar>split<bar>bnext<bar>bdelete<cr>
 nnoremap <silent> tt :buffer term<Tab><CR>
 
 " Open a new tab
-nnoremap T :tabnew<cr>
-nnoremap <leader>T :tabnew<cr><bar>:terminal<cr>
+nnoremap <leader>T :tabnew<cr>
 
 " fix comments; convert `//`-style comments to ` * ...`
 vnoremap <leader>c :s/\\/\\// */g<CR>
@@ -94,7 +90,7 @@ set wildmenu                " enables tab-complete list in command mode
 set lazyredraw              " do not re-draw while executing macros
 set colorcolumn=80          " ruler at 80 chars
 set nofixendofline          " do not restore EOL at end of file when missing
-set nosmartindent           " thank you Lawrence
+set nosmartindent           " it's not that smart
 
 " The next four settings completely prevent vim from backing your work up
 " anywhere. These backups can cause bugs for many plugins, clutter your
@@ -121,9 +117,20 @@ set expandtab
 augroup tabconf
 
     " 2-space tab languages
-    autocmd Filetype
-\       yaml,html,css,htmldjango,javascript,javascriptreact,typescript,typescriptreact,markdown,terraform,dart,lua,hcl,astro
-\       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype yaml            setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype html            setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype css             setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype htmldjango      setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype javascript      setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype javascriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype typescript      setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype typescriptreact setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype markdown        setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype terraform       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype dart            setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype lua             setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype hcl             setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+    autocmd Filetype astro           setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
     " 3-space tab languages (why, reStructured text, why?!?)
     autocmd Filetype rst setlocal tabstop=3 shiftwidth=3 softtabstop=3 expandtab
@@ -136,16 +143,11 @@ augroup markdown
 
     " Set textwidth to 80 chars
     " The `pr` filetype is used by `gh.nvim`
-    autocmd Filetype markdown,smgl,pr setlocal textwidth=79 spell
+    autocmd Filetype markdown,smgl,pr setlocal textwidth=80 spell
 
     " Wrap text for markdown
     autocmd Filetype markdown,smgl setlocal wrap
 
-augroup END
-
-
-augroup rust
-    autocmd BufNewFile,BufRead *.rs nnoremap <leader>ct :!cargo test<CR>
 augroup END
 
 
