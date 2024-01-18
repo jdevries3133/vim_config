@@ -70,6 +70,7 @@ vnoremap <leader>c :s/\\/\\// */g<CR>
 " above.
 
 syntax on                   " enable syntax highlighting
+set re=0                    " see https://jameschambers.co.uk/vim-typescript-slow
 set ttyfast                 " tell vim this isn't a 1995 dial-up remote terminal
 set showtabline=2           " always show file name at the top
 set nowrap                  " do not wrap lines
