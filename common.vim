@@ -172,6 +172,10 @@ let g:netrw_liststyle = 3
 
 let g:netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 
+" See
+" https://github.com/rust-lang/rust.vim/blob/1c570699a3be4a593fe13b40ab9f8edb89187439/ftplugin/rust.vim#L52-L56
+let g:rust_recommended_style = 0
+
 " built-in macro for xml/html tag matching with %
 runtime macros/matchit.vim
 
