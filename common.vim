@@ -144,7 +144,7 @@ augroup markdown
 
     " Set textwidth to 80 chars
     " The `pr` filetype is used by `gh.nvim`
-    autocmd Filetype markdown,smgl,pr setlocal textwidth=80 spell
+    autocmd Filetype markdown,smgl,pr,rmd setlocal textwidth=80 spell
 
     " Wrap text for markdown
     autocmd Filetype markdown,smgl setlocal wrap
